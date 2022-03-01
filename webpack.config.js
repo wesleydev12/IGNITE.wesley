@@ -15,7 +15,7 @@ module.exports = {
         extensions: ['.js', '.jsx'],
     },
     devServer: {
-        contentBase: path.resolve(__dirname, 'public')
+        static: path.resolve(__dirname, 'public')
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -28,6 +28,12 @@ module.exports = {
                 test: /\.jsx$/, // verificar se terminar com .jsx
                 exclude: /node_modules/,
                 use: 'babel-loader', // integração do babel com webpack
+                
+            },
+            {
+                test: /\.scss$/, 
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader', 'scss-loader']
                 
             }
         ],
